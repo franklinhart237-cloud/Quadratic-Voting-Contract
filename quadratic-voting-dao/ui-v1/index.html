@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quadratic Voting DAO – v1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>Quadratic Voting DAO</h1>
+        <p class="tagline">Deposit STX liquidity to earn credits, then vote quadratically to prevent whale dominance.</p>
+        <button id="connect-button" class="primary">Connect Stacks Wallet</button>
+      </header>
+
+      <section class="panel">
+        <h2>Your Position</h2>
+        <div class="stats">
+          <div class="stat">
+            <span class="label">Deposited STX (µSTX)</span>
+            <span id="deposited" class="value">–</span>
+          </div>
+          <div class="stat">
+            <span class="label">Available credits</span>
+            <span id="credits" class="value">–</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <section class="panel">
+          <h2>Deposit Liquidity</h2>
+          <form id="deposit-form">
+            <label>
+              Amount (µSTX)
+              <input id="deposit-amount" type="number" min="1" required />
+            </label>
+            <button type="submit" class="primary">Deposit</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Withdraw Liquidity</h2>
+          <form id="withdraw-form">
+            <label>
+              Amount (µSTX)
+              <input id="withdraw-amount" type="number" min="1" required />
+            </label>
+            <button type="submit" class="secondary">Withdraw</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="panel">
+        <h2>Create Proposal</h2>
+        <form id="proposal-form">
+          <label>
+            Description (max 200 bytes)
+            <input id="proposal-description" type="text" maxlength="200" required />
+          </label>
+          <button type="submit" class="primary">Create proposal</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Vote on Proposal</h2>
+        <form id="vote-form" class="vote-form">
+          <label>
+            Proposal ID
+            <input id="vote-proposal-id" type="number" min="1" required />
+          </label>
+          <label>
+            Votes
+            <input id="vote-count" type="number" min="1" required />
+          </label>
+          <p class="hint">Cost grows quadratically: cost = votes² credits.</p>
+          <button type="submit" class="primary">Cast vote</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Debug</h2>
+        <pre id="log" class="log"></pre>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
